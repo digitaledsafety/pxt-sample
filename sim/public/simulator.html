@@ -13,11 +13,16 @@
     </style>
     <script src="/cdn/pxtsim.js"></script>
     <script src="/sim/sim.js"></script>
+    <script type="importmap">
+        {
+          "imports": {
+            "three": "https://cdn.jsdelivr.net/npm/three@0.171.0/build/three.module.js",
+            "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.171.0/examples/jsm/"
+          }
+        }
+      </script>
 </head>
 
 <body>
-    <svg id='svgcanvas' xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 280">
-        <circle id='svgsprite' cx="100" cy="100" r="50" class="sprite" />
-        <circle id='svgsprite2' cx="50" cy="50" r="25" class="sprite" />
-    </svg>
+    <script type="module" src="/sim/main.js"></script>
 </body>
