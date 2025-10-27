@@ -9,64 +9,6 @@ async function delay<T>(duration: number, value?: T | Promise<T>): Promise<T> {
     return output;
 }
 
-namespace pxsim.hare {
-    /**
-     * This is hop
-     */
-    //% blockId="sampleHop" block="hop %hop on color %color=colorNumberPicker"
-    //% hop.fieldEditor="gridpicker"
-    export function hop(hop: Hop, color: number) {
-
-    }
-
-    //% blockId=sampleOnLand block="on land"
-    //% optionalVariableArgs
-    export function onLand(handler: (height: number, more: number, most: number) => void) {
-
-    }
-}
-
-namespace pxsim.turtle {
-    /**
-     * Moves the sprite forward
-     * @param steps number of steps to move, eg: 1
-     */
-    //% weight=90
-    //% blockId=sampleForward block="forward %steps"
-    export function forwardAsync(steps: number) {
-        return board().sprite.forwardAsync(steps)
-    }
-
-    /**
-     * Moves the sprite forward
-     * @param direction the direction to turn, eg: Direction.Left
-     * @param angle degrees to turn, eg:90
-     */
-    //% weight=85
-    //% blockId=sampleTurn block="turn %direction|by %angle degrees"
-    //% angle.min=-180 angle.max=180
-    export function turnAsync(direction: Direction, angle: number) {
-        let b = board();
-
-        if (direction == Direction.Left)
-            b.sprite.angle -= angle;
-        else
-            b.sprite.angle += angle;
-        return delay(400)
-    }
-
-    /**
-     * Triggers when the turtle bumps a wall
-     * @param handler 
-     */
-    //% blockId=onBump block="on bump"
-    export function onBump(handler: RefAction) {
-        let b = board();
-
-        b.bus.listen("Turtle", "Bump", handler);
-    }
-}
-
 namespace pxsim.loops {
 
     /**
@@ -104,53 +46,18 @@ namespace pxsim.console {
     }
 }
 
-namespace pxsim {
+namespace pxsim.box {
     /**
-     * A ghost on the screen.
+     * Sets the color of the box
+     * @param color the color to set the box to
      */
-    //%
-    export class Sprite {
-        /**
-         * The X-coordiante
-         */
-        //%
-        public x = 100;
-         /**
-         * The Y-coordiante
-         */
-        //%
-        public y = 100;
-        public angle = 90;
-        
-        constructor() {
-        }
-        
-        private foobar() {}
-
-        /**
-         * Move the thing forward
-         */
-        //%
-        public forwardAsync(steps: number) {
-            let deg = this.angle / 180 * Math.PI;
-            this.x += Math.cos(deg) * steps * 10;
-            this.y += Math.sin(deg) * steps * 10;
-            board().updateView();
-
-            if (this.x < 0 || this.y < 0)
-                board().bus.queue("TURTLE", "BUMP");
-
-            return delay(400)
-        }
-    }
-}
-
-namespace pxsim.sprites {
-    /**
-     * Creates a new sprite
-     */
-    //% blockId="sampleCreate" block="createSprite"
-    export function createSprite(): Sprite {
-        return new Sprite();
+    //% blockId="sampleSetColor" block="set color %color=colorNumberPicker"
+    export function setColor(color: number) {
+        let b = board();
+        // convert color number to RGB
+        let red = (color >> 16) & 0xFF;
+        let green = (color >> 8) & 0xFF;
+        let blue = color & 0xFF;
+        b.box.material.emissiveColor = new BABYLON.Color3(red / 255, green / 255, blue / 255);
     }
 }

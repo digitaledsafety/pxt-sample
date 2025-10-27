@@ -1,0 +1,4 @@
+Using target sample with build engine none
+  target: v2.0.2 /app
+  pxt-core: v7.4.21 /app/node_modules/pxt-core
+log strings: 6 files; 0 strings -> sim-strings.json
