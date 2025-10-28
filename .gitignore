@@ -10,3 +10,5 @@ packaged
 gh-pages
 package-lock.json
 pxt.log
+pxt_serve_output.log
+jules-scratch/
