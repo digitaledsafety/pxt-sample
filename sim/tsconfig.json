@@ -8,6 +8,9 @@
         "out": "../built/sim.js",
         "rootDir": ".",
         "newLine": "LF",
-        "sourceMap": false
+        "sourceMap": false,
+        "types": [
+            "babylonjs"
+        ]
     }
 }

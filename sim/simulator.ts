@@ -1,5 +1,4 @@
 /// <reference path="../node_modules/pxt-core/built/pxtsim.d.ts"/>
-/// <reference path="../node_modules/@types/babylonjs/index.d.ts"/>
 
 namespace pxsim {
     /**
