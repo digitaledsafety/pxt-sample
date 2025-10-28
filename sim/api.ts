@@ -1,5 +1,4 @@
 /// <reference path="../libs/core/enums.d.ts"/>
-/// <reference path="../node_modules/@types/babylonjs/index.d.ts"/>
 
 async function delay<T>(duration: number, value: T | Promise<T>): Promise<T>;
 async function delay(duration: number): Promise<void>
@@ -8,6 +7,64 @@ async function delay<T>(duration: number, value?: T | Promise<T>): Promise<T> {
     const output = await value;
     await new Promise<void>(resolve => setTimeout(() => resolve(), duration));
     return output;
+}
+
+namespace pxsim.hare {
+    /**
+     * This is hop
+     */
+    //% blockId="sampleHop" block="hop %hop on color %color=colorNumberPicker"
+    //% hop.fieldEditor="gridpicker"
+    export function hop(hop: Hop, color: number) {
+
+    }
+
+    //% blockId=sampleOnLand block="on land"
+    //% optionalVariableArgs
+    export function onLand(handler: (height: number, more: number, most: number) => void) {
+
+    }
+}
+
+namespace pxsim.turtle {
+    /**
+     * Moves the sprite forward
+     * @param steps number of steps to move, eg: 1
+     */
+    //% weight=90
+    //% blockId=sampleForward block="forward %steps"
+    export function forwardAsync(steps: number) {
+        return board().sprite.forwardAsync(steps)
+    }
+
+    /**
+     * Moves the sprite forward
+     * @param direction the direction to turn, eg: Direction.Left
+     * @param angle degrees to turn, eg:90
+     */
+    //% weight=85
+    //% blockId=sampleTurn block="turn %direction|by %angle degrees"
+    //% angle.min=-180 angle.max=180
+    export function turnAsync(direction: Direction, angle: number) {
+        let b = board();
+
+        if (direction == Direction.Left)
+            b.sprite.angle -= angle;
+        else
+            b.sprite.angle += angle;
+        return delay(400)
+    }
+
+    /**
+     * Triggers when the turtle bumps a wall
+     * @param handler 
+     */
+    //% blockId=onBump block="on bump"
+    export function onBump(handler: RefAction) {
+        let b = board();
+
+        b.bus.listen("Turtle", "Bump", handler);
+    }
 }
 
 namespace pxsim.loops {
@@ -47,112 +104,53 @@ namespace pxsim.console {
     }
 }
 
-namespace pxsim._helpers {
-    export function rotate(mesh: BABYLON.Mesh, axis: Axis, angle: number) {
-        switch (axis) {
-            case Axis.X:
-                mesh.rotation.x += angle / 180 * Math.PI;
-                break;
-            case Axis.Y:
-                mesh.rotation.y += angle / 180 * Math.PI;
-                break;
-            case Axis.Z:
-                mesh.rotation.z += angle / 180 * Math.PI;
-                break;
+namespace pxsim {
+    /**
+     * A ghost on the screen.
+     */
+    //%
+    export class Sprite {
+        /**
+         * The X-coordiante
+         */
+        //%
+        public x = 100;
+         /**
+         * The Y-coordiante
+         */
+        //%
+        public y = 100;
+        public angle = 90;
+        
+        constructor() {
+        }
+        
+        private foobar() {}
+
+        /**
+         * Move the thing forward
+         */
+        //%
+        public forwardAsync(steps: number) {
+            let deg = this.angle / 180 * Math.PI;
+            this.x += Math.cos(deg) * steps * 10;
+            this.y += Math.sin(deg) * steps * 10;
+            board().updateView();
+
+            if (this.x < 0 || this.y < 0)
+                board().bus.queue("TURTLE", "BUMP");
+
+            return delay(400)
         }
     }
-
-    export function scale(mesh: BABYLON.Mesh, axis: Axis, factor: number) {
-        switch (axis) {
-            case Axis.X:
-                mesh.scaling.x *= factor;
-                break;
-            case Axis.Y:
-                mesh.scaling.y *= factor;
-                break;
-            case Axis.Z:
-                mesh.scaling.z *= factor;
-                break;
-        }
-    }
 }
 
-namespace pxsim.box {
+namespace pxsim.sprites {
     /**
-     * Rotates the box
-     * @param axis the axis to rotate on
-     * @param angle the angle to rotate by
+     * Creates a new sprite
      */
-    //% blockId="boxRotate" block="rotate box on axis %axis|by %angle degrees"
-    //% angle.min=-180 angle.max=180
-    export function rotate(axis: Axis, angle: number) {
-        _helpers.rotate(board().box, axis, angle);
-    }
-
-    /**
-     * Scales the box
-     * @param axis the axis to scale on
-     * @param factor the factor to scale by
-     */
-    //% blockId="boxScale" block="scale box on axis %axis|by %factor"
-    export function scaling(axis: Axis, factor: number) {
-        _helpers.scale(board().box, axis, factor);
-    }
-
-    /**
-     * Sets the color of the box
-     * @param color the color to set
-     */
-    //% blockId="boxColor" block="set box color %color=colorNumberPicker"
-    export function color(color: number) {
-        let b = board();
-        let material = b.box.material as BABYLON.StandardMaterial;
-        material.emissiveColor = BABYLON.Color3.FromHexString("#" + color.toString(16));
-    }
-}
-
-namespace pxsim.torus {
-    /**
-     * Rotates the torus
-     * @param axis the axis to rotate on
-     * @param angle the angle to rotate by
-     */
-    //% blockId="torusRotate" block="rotate torus on axis %axis|by %angle degrees"
-    //% angle.min=-180 angle.max=180
-    export function rotate(axis: Axis, angle: number) {
-        _helpers.rotate(board().torus, axis, angle);
-    }
-
-    /**
-     * Scales the torus
-     * @param axis the axis to scale on
-     * @param factor the factor to scale by
-     */
-    //% blockId="torusScale" block="scale torus on axis %axis|by %factor"
-    export function scaling(axis: Axis, factor: number) {
-        _helpers.scale(board().torus, axis, factor);
-    }
-}
-
-namespace pxsim.cylinder {
-    /**
-     * Rotates the cylinder
-     * @param axis the axis to rotate on
-     * @param angle the angle to rotate by
-     */
-    //% blockId="cylinderRotate" block="rotate cylinder on axis %axis|by %angle degrees"
-    //% angle.min=-180 angle.max=180
-    export function rotate(axis: Axis, angle: number) {
-        _helpers.rotate(board().cylinder, axis, angle);
-    }
-
-    /**
-     * Scales the cylinder
-     * @param axis the axis to scale on
-     * @param factor the factor to scale by
-     */
-    //% blockId="cylinderScale" block="scale cylinder on axis %axis|by %factor"
-    export function scaling(axis: Axis, factor: number) {
-        _helpers.scale(board().cylinder, axis, factor);
+    //% blockId="sampleCreate" block="createSprite"
+    export function createSprite(): Sprite {
+        return new Sprite();
     }
 }
