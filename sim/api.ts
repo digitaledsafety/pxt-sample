@@ -1,5 +1,4 @@
 /// <reference path="../libs/core/enums.d.ts"/>
-/// <reference path="../node_modules/@types/babylonjs/index.d.ts"/>
 
 async function delay<T>(duration: number, value: T | Promise<T>): Promise<T>;
 async function delay(duration: number): Promise<void>
