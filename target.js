@@ -366,7 +366,7 @@ var pxtTargetBundle = {
     },
     "versions": {
         "branch": "master",
-        "commits": "https://github.com/digitaledsafety/pxt-sample/commits/2b46fde29e99f155019e460d49f38703afa75e62",
+        "commits": "https://github.com/digitaledsafety/pxt-sample/commits/60c15374e387c4e711276192dda1feb74fa64f8d",
         "target": "2.0.2",
         "pxt": "7.4.21"
     },
