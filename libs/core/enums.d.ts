@@ -18,12 +18,4 @@ declare const enum Hop {
     Astronomical
 }
 
-declare const enum Axis {
-    //% block=x
-    X,
-    //% block=y
-    Y,
-    //% block-z
-    Z
-}
 

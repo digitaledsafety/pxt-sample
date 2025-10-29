@@ -8,8 +8,7 @@
         "packages": true
     },
     "bundleddirs": [
-        "libs/core",
-        "libs/babylonjs"
+        "libs/core"
     ],
     "runtime": {
       "mathBlocks": true,

@@ -37,7 +37,7 @@ declare namespace turtle {
 
     /**
      * Triggers when the turtle bumps a wall
-     * @param handler
+     * @param handler 
      */
     //% blockId=onBump block="on bump"
     //% shim=turtle::onBump
