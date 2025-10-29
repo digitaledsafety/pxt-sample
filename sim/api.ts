@@ -1,4 +1,5 @@
 /// <reference path="../libs/core/enums.d.ts"/>
+/// <reference path="../libs/babylonjs/index.d.ts"/>
 
 async function delay<T>(duration: number, value: T | Promise<T>): Promise<T>;
 async function delay(duration: number): Promise<void>
@@ -104,53 +105,35 @@ namespace pxsim.console {
     }
 }
 
-namespace pxsim {
+namespace pxsim.box {
     /**
      * A ghost on the screen.
      */
-    //%
-    export class Sprite {
-        /**
-         * The X-coordiante
-         */
-        //%
-        public x = 100;
-         /**
-         * The Y-coordiante
-         */
-        //%
-        public y = 100;
-        public angle = 90;
-        
-        constructor() {
-        }
-        
-        private foobar() {}
-
-        /**
-         * Move the thing forward
-         */
-        //%
-        public forwardAsync(steps: number) {
-            let deg = this.angle / 180 * Math.PI;
-            this.x += Math.cos(deg) * steps * 10;
-            this.y += Math.sin(deg) * steps * 10;
-            board().updateView();
-
-            if (this.x < 0 || this.y < 0)
-                board().bus.queue("TURTLE", "BUMP");
-
-            return delay(400)
+    //% blockId="boxRotate" block="rotate box on axis %axis|by %angle degrees"
+    //% angle.min=-180 angle.max=180
+    export function rotate(axis: Axis, angle: number) {
+        let b = board();
+        switch (axis) {
+            case Axis.X:
+                b.box.rotation.x += angle / 180 * Math.PI;
+                break;
+            case Axis.Y:
+                b.box.rotation.y += angle / 180 * Math.PI;
+                break;
+            case Axis.Z:
+                b.box.rotation.z += angle / 180 * Math.PI;
+                break;
         }
     }
-}
 
-namespace pxsim.sprites {
     /**
-     * Creates a new sprite
+     * Sets the color of the box
+     * @param color the color to set
      */
-    //% blockId="sampleCreate" block="createSprite"
-    export function createSprite(): Sprite {
-        return new Sprite();
+    //% blockId="boxColor" block="set box color %color=colorNumberPicker"
+    export function color(color: number) {
+        let b = board();
+        let material = b.box.material as BABYLON.StandardMaterial;
+        material.emissiveColor = BABYLON.Color3.FromHexString("#" + color.toString(16));
     }
 }

@@ -1,4 +1,5 @@
 /// <reference path="../node_modules/pxt-core/built/pxtsim.d.ts"/>
+/// <reference path="../libs/babylonjs/index.d.ts"/>
 
 namespace pxsim {
     /**
@@ -20,12 +21,9 @@ namespace pxsim {
      * Do not store state anywhere else!
      */
     export class Board extends pxsim.BaseBoard {
-        public element : SVGSVGElement;
-        public spriteElement: SVGCircleElement;
-        public hareElement: SVGCircleElement;
-        public sprite : Sprite;
-        public hare: Sprite;
-        
+        public scene: BABYLON.Scene;
+        public box: BABYLON.Mesh;
+
         constructor() {
             super();
             this.element = <SVGSVGElement><any>document.getElementById('svgcanvas');
@@ -36,8 +34,36 @@ namespace pxsim {
         }
         
         initAsync(msg: pxsim.SimulatorRunMessage): Promise<void> {
-            document.body.innerHTML = ''; // clear children
-            document.body.appendChild(this.element);
+            const canvas = document.getElementById("renderCanvas") as HTMLCanvasElement;
+            const engine = new BABYLON.Engine(canvas, true, {
+                preserveDrawingBuffer: false,
+                alpha: true,
+            });
+
+            this.scene = new BABYLON.Scene(engine);
+            this.scene.clearColor = new BABYLON.Color3(0.8, 0.8, 0.8);
+            const camera = new BABYLON.FreeCamera(
+                "camera",
+                new BABYLON.Vector3(0, 0, -10),
+                this.scene,
+            );
+            const light = new BABYLON.PointLight(
+                "light",
+                new BABYLON.Vector3(10, 10, 0),
+                this.scene,
+            );
+
+            this.box = BABYLON.Mesh.CreateBox("box", 2, this.scene);
+            this.box.rotation.x = -0.2;
+            this.box.rotation.y = -0.4;
+
+            const boxMaterial = new BABYLON.StandardMaterial("material", this.scene);
+            boxMaterial.emissiveColor = new BABYLON.Color3(0, 0.58, 0.86);
+            this.box.material = boxMaterial;
+
+            engine.runRenderLoop(() => {
+                this.scene.render();
+            });
 
             return Promise.resolve();
         }       
