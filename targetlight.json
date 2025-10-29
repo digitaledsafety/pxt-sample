@@ -21,7 +21,7 @@
     },
     "versions": {
         "branch": "master",
-        "commits": "https://github.com/digitaledsafety/pxt-sample/commits/60c15374e387c4e711276192dda1feb74fa64f8d",
+        "commits": "https://github.com/digitaledsafety/pxt-sample/commits/d421207f568a371be2a700a5d3371dd8a9c1c61e",
         "target": "2.0.2",
         "pxt": "7.4.21"
     },
