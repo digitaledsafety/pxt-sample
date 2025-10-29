@@ -1,5 +1,5 @@
 /// <reference path="../node_modules/pxt-core/built/pxtsim.d.ts"/>
-/// <reference path="../node_modules/@types/babylonjs/index.d.ts"/>
+/// <reference path="../libs/babylonjs/index.d.ts"/>
 
 namespace pxsim {
     /**
@@ -23,8 +23,6 @@ namespace pxsim {
     export class Board extends pxsim.BaseBoard {
         public scene: BABYLON.Scene;
         public box: BABYLON.Mesh;
-        public torus: BABYLON.Mesh;
-        public cylinder: BABYLON.Mesh;
 
         constructor() {
             super();
@@ -57,22 +55,6 @@ namespace pxsim {
             const boxMaterial = new BABYLON.StandardMaterial("material", this.scene);
             boxMaterial.emissiveColor = new BABYLON.Color3(0, 0.58, 0.86);
             this.box.material = boxMaterial;
-
-            this.torus = BABYLON.Mesh.CreateTorus("torus", 2, 0.5, 15, this.scene);
-            this.torus.position.x = -5;
-            this.torus.rotation.x = 1.5;
-
-            const torusMaterial = new BABYLON.StandardMaterial("material", this.scene);
-            torusMaterial.emissiveColor = new BABYLON.Color3(0.4, 0.4, 0.4);
-            this.torus.material = torusMaterial;
-
-            this.cylinder = BABYLON.Mesh.CreateCylinder("cylinder", 2, 2, 2, 12, 1, this.scene);
-            this.cylinder.position.x = 5;
-            this.cylinder.rotation.x = -0.2;
-
-            const cylinderMaterial = new BABYLON.StandardMaterial("material", this.scene);
-            cylinderMaterial.emissiveColor = new BABYLON.Color3(1, 0.58, 0);
-            this.cylinder.material = cylinderMaterial;
 
             engine.runRenderLoop(() => {
                 this.scene.render();

@@ -23,7 +23,7 @@ declare const enum Axis {
     X,
     //% block=y
     Y,
-    //% block=z
+    //% block-z
     Z
 }
 

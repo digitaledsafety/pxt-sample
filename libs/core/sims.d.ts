@@ -1,4 +1,49 @@
 // Auto-generated from simulator. Do not edit.
+declare namespace hare {
+    /**
+     * This is hop
+     */
+    //% blockId="sampleHop" block="hop %hop on color %color=colorNumberPicker"
+    //% hop.fieldEditor="gridpicker"
+    //% shim=hare::hop
+    function hop(hop: Hop, color: number): void;
+
+    //% blockId=sampleOnLand block="on land"
+    //% optionalVariableArgs
+    //% shim=hare::onLand
+    function onLand(handler: (height: number, more: number, most: number) => void): void;
+
+}
+declare namespace turtle {
+    /**
+     * Moves the sprite forward
+     * @param steps number of steps to move, eg: 1
+     */
+    //% weight=90
+    //% blockId=sampleForward block="forward %steps"
+    //% shim=turtle::forwardAsync promise
+    function forward(steps: number): void;
+
+    /**
+     * Moves the sprite forward
+     * @param direction the direction to turn, eg: Direction.Left
+     * @param angle degrees to turn, eg:90
+     */
+    //% weight=85
+    //% blockId=sampleTurn block="turn %direction|by %angle degrees"
+    //% angle.min=-180 angle.max=180
+    //% shim=turtle::turnAsync promise
+    function turn(direction: Direction, angle: number): void;
+
+    /**
+     * Triggers when the turtle bumps a wall
+     * @param handler
+     */
+    //% blockId=onBump block="on bump"
+    //% shim=turtle::onBump
+    function onBump(handler: () => void): void;
+
+}
 declare namespace loops {
     /**
      * Repeats the code forever in the background. On each iteration, allows other code to run.
@@ -28,75 +73,40 @@ declare namespace console {
     function log(msg: string): void;
 
 }
-declare namespace box {
     /**
-     * Rotates the box
-     * @param axis the axis to rotate on
-     * @param angle the angle to rotate by
+     * A ghost on the screen.
      */
-    //% blockId="boxRotate" block="rotate box on axis %axis|by %angle degrees"
-    //% angle.min=-180 angle.max=180
-    //% shim=box::rotate
-    function rotate(axis: Axis, angle: number): void;
+    //%
+    declare class Sprite {
+        /**
+         * The X-coordiante
+         */
+        //%
+        //% shim=.x
+        public x: number;
 
-    /**
-     * Scales the box
-     * @param axis the axis to scale on
-     * @param factor the factor to scale by
-     */
-    //% blockId="boxScale" block="scale box on axis %axis|by %factor"
-    //% shim=box::scaling
-    function scaling(axis: Axis, factor: number): void;
+        /**
+         * The Y-coordiante
+         */
+        //%
+        //% shim=.y
+        public y: number;
 
-    /**
-     * Sets the color of the box
-     * @param color the color to set
-     */
-    //% blockId="boxColor" block="set box color %color=colorNumberPicker"
-    //% shim=box::color
-    function color(color: number): void;
+        /**
+         * Move the thing forward
+         */
+        //%
+        //% shim=.forwardAsync promise
+        public forward(steps: number): void;
 
-}
-declare namespace torus {
+    }
+declare namespace sprites {
     /**
-     * Rotates the torus
-     * @param axis the axis to rotate on
-     * @param angle the angle to rotate by
+     * Creates a new sprite
      */
-    //% blockId="torusRotate" block="rotate torus on axis %axis|by %angle degrees"
-    //% angle.min=-180 angle.max=180
-    //% shim=torus::rotate
-    function rotate(axis: Axis, angle: number): void;
-
-    /**
-     * Scales the torus
-     * @param axis the axis to scale on
-     * @param factor the factor to scale by
-     */
-    //% blockId="torusScale" block="scale torus on axis %axis|by %factor"
-    //% shim=torus::scaling
-    function scaling(axis: Axis, factor: number): void;
-
-}
-declare namespace cylinder {
-    /**
-     * Rotates the cylinder
-     * @param axis the axis to rotate on
-     * @param angle the angle to rotate by
-     */
-    //% blockId="cylinderRotate" block="rotate cylinder on axis %axis|by %angle degrees"
-    //% angle.min=-180 angle.max=180
-    //% shim=cylinder::rotate
-    function rotate(axis: Axis, angle: number): void;
-
-    /**
-     * Scales the cylinder
-     * @param axis the axis to scale on
-     * @param factor the factor to scale by
-     */
-    //% blockId="cylinderScale" block="scale cylinder on axis %axis|by %factor"
-    //% shim=cylinder::scaling
-    function scaling(axis: Axis, factor: number): void;
+    //% blockId="sampleCreate" block="createSprite"
+    //% shim=sprites::createSprite
+    function createSprite(): Sprite;
 
 }
 
