@@ -45,6 +45,8 @@
   "{id:category}Math": "Math",
   "{id:category}Number": "Number",
   "{id:category}Object": "Object",
+  "{id:category}Sprite": "Sprite",
+  "{id:category}Sprites": "Sprites",
   "{id:category}String": "String",
   "{id:category}Text": "Text",
   "{id:group}Modify": "Modify",

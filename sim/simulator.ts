@@ -26,6 +26,11 @@ namespace pxsim {
 
         constructor() {
             super();
+            this.element = <SVGSVGElement><any>document.getElementById('svgcanvas');
+            this.spriteElement = <SVGCircleElement>this.element.getElementById('svgsprite');
+            this.hareElement = <SVGCircleElement>this.element.getElementById('svgsprite2');
+            this.sprite = new Sprite()
+            this.hare = new Sprite();
         }
         
         initAsync(msg: pxsim.SimulatorRunMessage): Promise<void> {
@@ -62,5 +67,13 @@ namespace pxsim {
 
             return Promise.resolve();
         }       
+        
+        updateView() {
+            this.spriteElement.cx.baseVal.value = this.sprite.x;
+            this.spriteElement.cy.baseVal.value = this.sprite.y;
+
+            this.hareElement.cx.baseVal.value = this.hare.x;
+            this.hareElement.cy.baseVal.value = this.hare.y;
+        }
     }
 }
