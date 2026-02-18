@@ -1,6 +1,6 @@
 {
     "name": "core",
-    "description": "A target sample for PXT",
+    "description": "Digital Education & Safety Foundation core package",
     "files": [
         "README.md",
         "pxt-core.d.ts",
