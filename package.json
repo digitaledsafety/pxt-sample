@@ -1,7 +1,7 @@
 {
-  "name": "pxt-sample",
+  "name": "pxt-desf",
   "version": "2.0.2",
-  "description": "sample target for PXT",
+  "description": "Digital Education & Safety Foundation PXT Target",
   "keywords": [
     "JavaScript",
     "education",
@@ -9,11 +9,11 @@
   ],
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Microsoft/pxt-sample.git"
+    "url": "git+https://github.com/digitaledsafety/pxt-desf.git"
   },
-  "author": "",
+  "author": "Digital Education & Safety Foundation",
   "license": "MIT",
-  "homepage": "https://github.com/Microsoft/pxt-sample#readme",
+  "homepage": "https://digitaleducationsafety.org/",
   "files": [
     "README.md",
     "pxtarget.json",
