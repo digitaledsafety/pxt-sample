@@ -1,8 +1,9 @@
 {
-    "logoUrl": "https://github.com/Microsoft/pxt-sample",
-    "homeUrl": "http://microsoft.github.io/pxt-sample/",
-    "privacyUrl": "https://go.microsoft.com/fwlink/?LinkId=521839",
-    "termsOfUseUrl": "https://go.microsoft.com/fwlink/?LinkID=206977",
+    "organization": "Digital Education & Safety Foundation",
+    "logoUrl": "https://digitaleducationsafety.org/",
+    "homeUrl": "https://digitaleducationsafety.org/",
+    "privacyUrl": "https://digitaleducationsafety.org/legal",
+    "termsOfUseUrl": "https://digitaleducationsafety.org/terms",
     "betaUrl": "https://makecode.com/",
     "docMenu": [
         {
@@ -36,7 +37,7 @@
     "python": true,
     "greenScreen": true,
     "monacoColors": {
-        "editor.background": "#ecf0f1"
+        "editor.background": "#ffffff"
     },
     "TOC": [
         {
@@ -334,9 +335,9 @@
             ]
         }
     ],
-    "embedUrl": "http://microsoft.github.io/pxt-sample/",
+    "embedUrl": "https://digitaleducationsafety.org/",
     "id": "sample",
-    "title": "MakeCode Editor Sample",
+    "title": "Digital Education & Safety Foundation",
     "name": "sample",
     "htmlDocIncludes": {}
 }

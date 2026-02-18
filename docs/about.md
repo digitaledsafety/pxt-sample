@@ -1,5 +1,5 @@
-# About Sample Target
+# About Digital Education & Safety Foundation Editor
 
-Example of editor target for [Microsoft MakeCode](https://makecode.com/).
+This editor is part of the Digital Education & Safety Foundation's mission to empower the underserved with modern STEM/STEAM education.
 
-See [GitHub repo](https://github.com/Microsoft/pxt-sample) for details.
+Learn more at [digitaleducationsafety.org](https://digitaleducationsafety.org/).

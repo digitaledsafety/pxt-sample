@@ -1,7 +1,7 @@
 {
     "id": "sample",
     "name": "sample",
-    "title": "MakeCode Editor Sample",
+    "title": "Digital Education & Safety Foundation",
     "corepkg": "core",
     "cloud": {
         "workspace": false,
@@ -21,7 +21,7 @@
     },
     "versions": {
         "branch": "master",
-        "commits": "https://github.com/digitaledsafety/pxt-sample/commits/6fbef818b073cb2ebd7a89a82fd0839d1eacab4e",
+        "commits": "https://github.com/digitaledsafety/pxt-sample/commits/5d042a570dbde269bf982308c210dd89ff736590",
         "target": "2.0.2",
         "pxt": "7.4.21"
     },
