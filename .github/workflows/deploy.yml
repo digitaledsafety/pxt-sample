@@ -23,10 +23,11 @@ jobs:
           npm install
 
       - name: Build static pages
-        run: pxt staticpkg --route pxt-sample
+        run: pxt staticpkg
 
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./built/packaged/pxt-sample
+          publish_dir: ./built/packaged
+          cname: makecode.digitaleducationsafety.org
