@@ -1,5 +1,5 @@
 // see https://github.com/Microsoft/monaco-editor
 self.MonacoEnvironment = { 
-    baseUrl: "/pxt-sample/" 
+    baseUrl: "/" 
 };
-importScripts("/pxt-sample/vs/base/worker/workerMain.js");
+importScripts("/vs/base/worker/workerMain.js");

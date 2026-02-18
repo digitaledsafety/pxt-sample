@@ -25,18 +25,18 @@
     "appTheme": {
         "organization": "Digital Education & Safety Foundation",
         "logoUrl": "https://digitaleducationsafety.org/",
-        "homeUrl": "/pxt-sample/",
+        "homeUrl": "/",
         "privacyUrl": "https://digitaleducationsafety.org/legal",
         "termsOfUseUrl": "https://digitaleducationsafety.org/terms",
         "betaUrl": "https://makecode.com/",
         "docMenu": [
             {
                 "name": "About",
-                "path": "/pxt-sample/docs/about"
+                "path": "/docs/about"
             },
             {
                 "name": "Docs",
-                "path": "/pxt-sample/docs/docs"
+                "path": "/docs/docs"
             }
         ],
         "coloredToolbox": false,
@@ -367,7 +367,7 @@
     },
     "versions": {
         "branch": "master",
-        "commits": "https://github.com/digitaledsafety/makecode.digitaledsafety.github.io/commits/3023301f84a667f15ae3ae6bee57557f0cc87540",
+        "commits": "https://github.com/digitaledsafety/makecode.digitaledsafety.github.io/commits/bbf16a4981a02427e7fe4e23e9bdc6eca745206f",
         "target": "2.0.2",
         "pxt": "7.4.21"
     },

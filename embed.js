@@ -3,47 +3,47 @@
 
     // This line gets patched up by the cloud
     var pxtConfig = {
-    "relprefix": "/pxt-sample/",
+    "relprefix": "/",
     "verprefix": "",
-    "workerjs": "/pxt-sample/worker.js",
-    "monacoworkerjs": "/pxt-sample/monacoworker.js",
-    "gifworkerjs": "/pxt-sample/gifjs/gif.worker.js",
-    "serviceworkerjs": "/pxt-sample/serviceworker.js",
-    "typeScriptWorkerJs": "/pxt-sample/tsworker.js",
+    "workerjs": "/worker.js",
+    "monacoworkerjs": "/monacoworker.js",
+    "gifworkerjs": "/gifjs/gif.worker.js",
+    "serviceworkerjs": "/serviceworker.js",
+    "typeScriptWorkerJs": "/tsworker.js",
     "pxtVersion": "7.4.21",
     "pxtRelId": "localDirRelId",
-    "pxtCdnUrl": "/pxt-sample/",
-    "commitCdnUrl": "/pxt-sample/",
-    "blobCdnUrl": "/pxt-sample/",
-    "cdnUrl": "/pxt-sample/",
+    "pxtCdnUrl": "/",
+    "commitCdnUrl": "/",
+    "blobCdnUrl": "/",
+    "cdnUrl": "/",
     "targetVersion": "0.0.0",
     "targetRelId": "",
     "targetUrl": "",
     "targetId": "sample",
-    "simUrl": "/pxt-sample/simulator.html",
-    "simserviceworkerUrl": "/pxt-sample/simulatorserviceworker.js",
-    "simworkerconfigUrl": "/pxt-sample/workerConfig.js",
-    "partsUrl": "/pxt-sample/siminstructions.html",
-    "runUrl": "/pxt-sample/run.html",
-    "docsUrl": "/pxt-sample/docs.html",
-    "multiUrl": "/pxt-sample/multi.html",
-    "asseteditorUrl": "/pxt-sample/asseteditor.html",
-    "skillmapUrl": "/pxt-sample/skillmap.html",
+    "simUrl": "/simulator.html",
+    "simserviceworkerUrl": "/simulatorserviceworker.js",
+    "simworkerconfigUrl": "/workerConfig.js",
+    "partsUrl": "/siminstructions.html",
+    "runUrl": "/run.html",
+    "docsUrl": "/docs.html",
+    "multiUrl": "/multi.html",
+    "asseteditorUrl": "/asseteditor.html",
+    "skillmapUrl": "/skillmap.html",
     "isStatic": true
 };
 
     var scripts = [
-        "/pxt-sample/highlight.js/highlight.pack.js",
-        "/pxt-sample/marked/marked.min.js",
+        "/highlight.js/highlight.pack.js",
+        "/marked/marked.min.js",
     ]
 
     if (typeof jQuery == "undefined")
-        scripts.unshift("/pxt-sample/jquery.js")
+        scripts.unshift("/jquery.js")
     if (typeof jQuery == "undefined" || !jQuery.prototype.sidebar)
-        scripts.push("/pxt-sample/semantic.js")
+        scripts.push("/semantic.js")
     if (!window.pxtTargetBundle)
-        scripts.push("/pxt-sample/target.js");
-    scripts.push("/pxt-sample/pxtembed.js");
+        scripts.push("/target.js");
+    scripts.push("/pxtembed.js");
 
     var pxtCallbacks = []
 
